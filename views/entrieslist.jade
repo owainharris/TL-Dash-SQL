@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .container
+    h1 Entries
+    .center
+  table.table.table-striped
+    thead
+      tr
+        th Employee ID
+        th Minutes
+    each entries in entrieslist
+      tr#entire_list_item
+        td #{entries.trafficEmployeeId.id}
+        td #{entries.minutes}

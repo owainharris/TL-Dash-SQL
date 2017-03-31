@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  p #{title}
+
+  table
+    thead
+      tr
+        th First Name
+        th Last Name
+        th Cost Per Hour
+        th Billable Minutes
+        th Total Minutes
+    tbody
+      - each item in rows
+        tr
+          td= item.firstName
+          td= item.lastName
+          td= item.costPerHour
+          td= item.minsBillable
+          td= item.total_hours
+

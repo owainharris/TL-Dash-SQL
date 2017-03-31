@@ -1,0 +1,4 @@
+SELECT employees.`firstName`, employees.`lastName`, entries.`minutes`
+FROM entries, employees
+WHERE entries.`fk_trafficEmployeeID`=employees.`pk_userID`
+ORDER BY employees.`pk_userID`

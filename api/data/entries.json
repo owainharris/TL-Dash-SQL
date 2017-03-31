@@ -1,0 +1,231 @@
+{
+   "data": [
+      {
+         "@class": "com.sohnar.trafficlite.transfer.scheduling.JobTaskTimeEntryTO",
+         "id": 46221001,
+         "version": 0,
+         "dateCreated": "2017-03-30T19:55:54.438+0000",
+         "dateModified": null,
+         "jobTaskId": {
+            "id": 16839577
+         },
+         "billable": true,
+         "exported": false,
+         "lockedByApproval": false,
+         "comment": null,
+         "endTime": "2017-03-30T19:55:48.917+0000",
+         "minutes": 150,
+         "trafficEmployeeId": {
+            "id": 3422
+         },
+         "taskDescription": "T1",
+         "taskComplete": false,
+         "taskRate": {
+            "amountString": 10,
+            "currencyType": "AUD"
+         },
+         "valueOfTimeEntry": {
+            "amountString": 25,
+            "currencyType": "AUD"
+         },
+         "jobId": {
+            "id": 2172736
+         },
+         "allocationGroupId": null,
+         "chargeBandId": {
+            "id": 27925
+         },
+         "timeEntryCost": {
+            "amountString": 37.5,
+            "currencyType": "AUD"
+         },
+         "timeEntryPersonalRate": {
+            "amountString": 200,
+            "currencyType": "AUD"
+         },
+         "jobStageDescription": null,
+         "lockedByApprovalEmployeeId": null,
+         "lockedByApprovalDate": null,
+         "exportError": null,
+         "workPoints": 0,
+         "externalCode": null,
+         "secondaryExternalCode": null,
+         "submitted": false,
+         "rejected": false,
+         "readyForExport": false,
+         "rejectedComment": null,
+         "startTime": "2017-03-30T17:25:48.917+0000"
+      },
+      {
+         "@class": "com.sohnar.trafficlite.transfer.scheduling.JobTaskTimeEntryTO",
+         "id": 46221019,
+         "version": 0,
+         "dateCreated": "2017-03-30T19:57:01.634+0000",
+         "dateModified": null,
+         "jobTaskId": {
+            "id": 16839574
+         },
+         "billable": true,
+         "exported": false,
+         "lockedByApproval": false,
+         "comment": null,
+         "endTime": "2017-03-30T19:56:55.754+0000",
+         "minutes": 270,
+         "trafficEmployeeId": {
+            "id": 3688
+         },
+         "taskDescription": "T2",
+         "taskComplete": false,
+         "taskRate": {
+            "amountString": 10,
+            "currencyType": "AUD"
+         },
+         "valueOfTimeEntry": {
+            "amountString": 45,
+            "currencyType": "AUD"
+         },
+         "jobId": {
+            "id": 2172736
+         },
+         "allocationGroupId": null,
+         "chargeBandId": {
+            "id": 27925
+         },
+         "timeEntryCost": {
+            "amountString": 0,
+            "currencyType": "AUD"
+         },
+         "timeEntryPersonalRate": {
+            "amountString": 0,
+            "currencyType": "AUD"
+         },
+         "jobStageDescription": null,
+         "lockedByApprovalEmployeeId": null,
+         "lockedByApprovalDate": null,
+         "exportError": null,
+         "workPoints": 0,
+         "externalCode": null,
+         "secondaryExternalCode": null,
+         "submitted": false,
+         "rejected": false,
+         "readyForExport": false,
+         "rejectedComment": null,
+         "startTime": "2017-03-30T15:26:55.754+0000"
+      },
+      {
+         "@class": "com.sohnar.trafficlite.transfer.scheduling.JobTaskTimeEntryTO",
+         "id": 46225556,
+         "version": 0,
+         "dateCreated": "2017-03-30T22:35:59.229+0000",
+         "dateModified": null,
+         "jobTaskId": {
+            "id": 15126737
+         },
+         "billable": true,
+         "exported": false,
+         "lockedByApproval": false,
+         "comment": null,
+         "endTime": "2017-03-30T22:35:53.580+0000",
+         "minutes": 270,
+         "trafficEmployeeId": {
+            "id": 22826
+         },
+         "taskDescription": "esfsfsfesf fsef sef sef esf sef sef sef ",
+         "taskComplete": false,
+         "taskRate": {
+            "amountString": 12,
+            "currencyType": "AUD"
+         },
+         "valueOfTimeEntry": {
+            "amountString": 54,
+            "currencyType": "AUD"
+         },
+         "jobId": {
+            "id": 2016233
+         },
+         "allocationGroupId": null,
+         "chargeBandId": {
+            "id": 27908
+         },
+         "timeEntryCost": {
+            "amountString": 0,
+            "currencyType": "AUD"
+         },
+         "timeEntryPersonalRate": {
+            "amountString": 0,
+            "currencyType": "AUD"
+         },
+         "jobStageDescription": null,
+         "lockedByApprovalEmployeeId": null,
+         "lockedByApprovalDate": null,
+         "exportError": null,
+         "workPoints": 0,
+         "externalCode": null,
+         "secondaryExternalCode": null,
+         "submitted": false,
+         "rejected": false,
+         "readyForExport": false,
+         "rejectedComment": null,
+         "startTime": "2017-03-30T18:05:53.580+0000"
+      },
+      {
+         "@class": "com.sohnar.trafficlite.transfer.scheduling.JobTaskTimeEntryTO",
+         "id": 46225586,
+         "version": 0,
+         "dateCreated": "2017-03-30T22:37:04.600+0000",
+         "dateModified": null,
+         "jobTaskId": {
+            "id": 15126737
+         },
+         "billable": true,
+         "exported": false,
+         "lockedByApproval": false,
+         "comment": null,
+         "endTime": "2017-03-30T22:36:58.500+0000",
+         "minutes": 270,
+         "trafficEmployeeId": {
+            "id": 22826
+         },
+         "taskDescription": "esfsfsfesf fsef sef sef esf sef sef sef ",
+         "taskComplete": false,
+         "taskRate": {
+            "amountString": 12,
+            "currencyType": "AUD"
+         },
+         "valueOfTimeEntry": {
+            "amountString": 54,
+            "currencyType": "AUD"
+         },
+         "jobId": {
+            "id": 2016233
+         },
+         "allocationGroupId": null,
+         "chargeBandId": {
+            "id": 27908
+         },
+         "timeEntryCost": {
+            "amountString": 0,
+            "currencyType": "AUD"
+         },
+         "timeEntryPersonalRate": {
+            "amountString": 0,
+            "currencyType": "AUD"
+         },
+         "jobStageDescription": null,
+         "lockedByApprovalEmployeeId": null,
+         "lockedByApprovalDate": null,
+         "exportError": null,
+         "workPoints": 0,
+         "externalCode": null,
+         "secondaryExternalCode": null,
+         "submitted": false,
+         "rejected": false,
+         "readyForExport": false,
+         "rejectedComment": null,
+         "startTime": "2017-03-30T18:06:58.500+0000"
+      }
+   ],
+   "error": false,
+   "message": "",
+   "count": 4
+}
