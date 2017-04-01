@@ -2,3 +2,7 @@ SELECT employees.`firstName`, employees.`lastName`, entries.`minutes`
 FROM entries, employees
 WHERE entries.`fk_trafficEmployeeID`=employees.`pk_userID`
 ORDER BY employees.`pk_userID`
+
+
+
+SELECT fk_trafficEmployeeID, firstName, lastName, costPerHour, minsBillable, sum(minutes) as total_hours FROM entries JOIN employees on fk_trafficEmployeeID = employees.pk_userID GROUP BY fk_trafficEmployeeID, firstName, lastName
