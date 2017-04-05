@@ -7,9 +7,11 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'ok',
-    database: 'tl'
+    database: 'tl',
+    connectionLimit: 15,
+    queueLimit: 30,
+    acquireTimeout: 1000000
 });
-
 
 
 // Decalre API Auth
@@ -23,13 +25,16 @@ const tl = new TrafficLive({
 
 
 //Call TL API and write response to JSON
-tl.entries.all(function(response, key, value) {
-    //    var drop = connection.query('DELETE FROM entries');
+tl.projects.all(function(response, key, value) {
+    var drop = connection.query('TRUNCATE TABLE projects');
+
     var result = value;
+
     var arr1 = response.data.map(function(item) {
-        return [item.id, item.dateCreated, item.minutes, item.timeEntryCost.amountString, item.trafficEmployeeId.id];
+        return [item.id, item.name, item.clientCRMEntryId];
     });
-    var query = connection.query('INSERT INTO entries(entrieId, dateCreated, minutes, timeEntryCost, fk_trafficEmployeeID) VALUES ?', [arr1],
+
+    var query = connection.query('INSERT INTO projects(projectID, projectDescription, fk_clientID) VALUES ?', [arr1],
         function(error, results, fields) {
             if (error) throw error;
             else {
@@ -37,4 +42,5 @@ tl.entries.all(function(response, key, value) {
                 connection.end();
             }
         });
+
 });

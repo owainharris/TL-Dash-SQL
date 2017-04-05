@@ -27,8 +27,9 @@ const tl = new TrafficLive({
 
 //Call TL API and write response to JSON
 tl.employees.find('isResource|EQ|false', function(response) {
-    var drop1 = connection.query('DELETE FROM entries');
-    var drop2 = connection.query('DELETE FROM employees');
+    var alter1 = connection.query('ALTER TABLE entries DROP CONSTRAINT fk_trafficEmployeeID');
+    // var alter2 = connection.query('ALTER TABLE entries CONSTRAINT fk_trafficEmployeeID');
+    var drop = connection.query('DELETE FROM employees');
 
     fs.writeFile(employeeFile, JSON.stringify(response.data, function(key, value) {
             var result = value;

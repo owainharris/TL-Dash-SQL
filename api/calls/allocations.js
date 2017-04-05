@@ -1,56 +1,42 @@
-const execSync = require('child_process').execSync;
-var TrafficLive = require('../lib/trafficLive.js');
-var fs = require('fs');
-var file1 = '../data/allocations.json';
-var MongoClient = require('mongodb').MongoClient;
-var assert = require('assert');
-var ObjectId = require('mongodb').ObjectID;
-var url = 'mongodb://localhost:27017/tl';
+// Declare dependencies
+const mysql = require("mysql");
+const TrafficLive = require('../lib/trafficLive.js');
+
+// Connection to MySQL
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'ok',
+    database: 'tl'
+});
 
 
 // Decalre API Auth
-var tl = new TrafficLive({
+const tl = new TrafficLive({
     email: 'owainh2@gmail.com',
     token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
     pageSize: 500 //max 500
 });
 
 
-tl.allocations.recent(function(response) {
-    fs.writeFile(file1, JSON.stringify(response, function(key, value) {
-        var result = value;
-        return result;
-    }, 3, 'utf8'));
 
 
-    var dropDocument = function(db, callback) {
-        db.collection('allocations').drop(function(err, result) {
-            assert.equal(err, null);
-            console.log("Step 1: Dropped Allocations");
-            callback();
-        });
-    };
+//Call TL API and write response to JSON
+tl.allocations.allBlocks(function(response, key, value) {
+    var drop = connection.query('TRUNCATE TABLE allocations');
 
-    MongoClient.connect(url, function(err, db) {
-        assert.equal(null, err);
-        dropDocument(db, function() {
-            db.close();
-        });
+    var result = value;
+    var arr1 = response.data.map(function(item) {
+        return [item.id, item.trafficEmployeeId];
     });
 
-
-    var insertDocument = function(db, callback) {
-        db.collection('allocations').insert(response.data, function(err, result) {
-            assert.equal(err, null);
-            console.log("Step 2: Inserted Allocations");
-            callback();
+    var query = connection.query('INSERT INTO allocations(allocationId, fk_employeeId) VALUES ?', [arr1],
+        function(error, results, fields) {
+            if (error) throw error;
+            else {
+                console.log("Imported to MySQL!");
+                connection.end();
+            }
         });
-    };
 
-    MongoClient.connect(url, function(err, db) {
-        assert.equal(null, err);
-        insertDocument(db, function() {
-            db.close();
-        });
-    });
 });

@@ -1,10 +1,6 @@
 // Declare dependencies
 const mysql = require("mysql");
-const execSync = require('child_process').execSync;
 const TrafficLive = require('../lib/trafficLive.js');
-const fs = require('fs');
-const jobsFile = '../data/jobs.json';
-const assert = require('assert');
 
 // Connection to MySQL
 const connection = mysql.createConnection({
@@ -24,24 +20,24 @@ const tl = new TrafficLive({
 
 
 
-
+// tl.jobs.find('jobStateType|EQ|"COMPLETE"', function(response) {
 //Call TL API and write response to JSON
-tl.jobs.find('jobStateType|EQ|"COMPLETE"', function(response) {
+tl.jobs.all(function(response, key, value) {
     var drop = connection.query('TRUNCATE TABLE jobs');
 
-    fs.writeFile(jobsFile, JSON.stringify(response.data, function(key, value) {
-            var result = value;
+    var result = value;
 
-            var arr1 = response.data.map(function(item) {
-                return [item.id, item.jobNumber, item.jobStateType, item.jobBillingStateType];
-            });
+    var arr1 = response.data.map(function(item) {
+        return [item.id, item.jobNumber, item.jobStateType, item.jobBillingStateType, item.potentialValue.amountString, item.estimatedSellValue.amountString, item.jobDetailId];
+    });
 
-            var query = connection.query('INSERT INTO jobs(jobID, jobNumber, jobStateType, jobBillingStateType) VALUES ?', [arr1],
-                function(error, results, fields) {
-                    if (error) throw error;
-                });
+    var query = connection.query('INSERT INTO jobs(jobID, jobNumber, jobStateType, jobBillingStateType, potentialValue, estimatedSellValue, fk_jobDetailId) VALUES ?', [arr1],
+        function(error, results, fields) {
+            if (error) throw error;
+            else {
+                console.log("Imported to MySQL!");
+                connection.end();
+            }
+        });
 
-            return result;
-        },
-        3, 'utf8'));
 });

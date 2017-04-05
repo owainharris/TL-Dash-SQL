@@ -11,7 +11,6 @@ const connection = mysql.createConnection({
 });
 
 
-
 // Decalre API Auth
 const tl = new TrafficLive({
     email: 'owainh2@gmail.com',
@@ -23,13 +22,15 @@ const tl = new TrafficLive({
 
 
 //Call TL API and write response to JSON
-tl.entries.all(function(response, key, value) {
-    //    var drop = connection.query('DELETE FROM entries');
+tl.clients.all(function(response, key, value) {
+    var drop = connection.query('TRUNCATE TABLE clients');
+
     var result = value;
     var arr1 = response.data.map(function(item) {
-        return [item.id, item.dateCreated, item.minutes, item.timeEntryCost.amountString, item.trafficEmployeeId.id];
+        return [item.id, item.name];
     });
-    var query = connection.query('INSERT INTO entries(entrieId, dateCreated, minutes, timeEntryCost, fk_trafficEmployeeID) VALUES ?', [arr1],
+
+    var query = connection.query('INSERT INTO clients(clientID, clientName) VALUES ?', [arr1],
         function(error, results, fields) {
             if (error) throw error;
             else {
@@ -37,4 +38,5 @@ tl.entries.all(function(response, key, value) {
                 connection.end();
             }
         });
+
 });
