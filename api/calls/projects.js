@@ -38,7 +38,7 @@ tl.projects.all(function(response, key, value) {
         function(error, results, fields) {
             if (error) throw error;
             else {
-                console.log("Imported to MySQL!");
+                console.log("Imported PROJECTS to MySQL!");
                 connection.end();
             }
         });

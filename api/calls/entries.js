@@ -1,3 +1,6 @@
+/* jshint node: true, deve: true, browserify: true */
+'use strict';
+
 // Declare dependencies
 const mysql = require("mysql");
 const TrafficLive = require('../lib/trafficLive.js');
@@ -33,7 +36,7 @@ tl.entries.all(function(response, key, value) {
         function(error, results, fields) {
             if (error) throw error;
             else {
-                console.log("Imported to MySQL!");
+                console.log("Imported ENTRIES to MySQL!");
                 connection.end();
             }
         });

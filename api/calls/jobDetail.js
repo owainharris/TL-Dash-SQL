@@ -35,7 +35,7 @@ tl.jobs.allDetails(function(response, key, value) {
         function(error, results, fields) {
             if (error) throw error;
             else {
-                console.log("Imported to MySQL!");
+                console.log("Imported JOBDETAIL to MySQL!");
                 connection.end();
             }
         });
