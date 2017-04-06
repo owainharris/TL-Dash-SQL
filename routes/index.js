@@ -1,6 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require("mysql");
+var runAll = require('../api/calls/runAll.js');
+var drop = require('../api/calls/drop.js');
+
+
+
+setInterval(function() {
+    //   drop();
+    runAll();
+}, 300000);
+
+
 
 
 router.get('/', function(req, res, next) {
