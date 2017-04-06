@@ -89,12 +89,12 @@ var trafficLive = function(options) {
         },
         tasks: {
             all: function(callback) {
-                return self.request(rest.get, '/timeallocations/jobtasks?', {}, function(result) {
+                return self.request(rest.get, '/job/TIME_FEE', {}, function(result) {
                     callback(result);
                 });
             },
             one: function(id, callback) {
-                return self.request(rest.get, '/timeallocations/jobtasks/' + id, {}, function(result) {
+                return self.request(rest.get, '/job/TIME_FEE/' + id, {}, function(result) {
                     callback(result);
                 });
             }
@@ -138,6 +138,11 @@ var trafficLive = function(options) {
         allocations: {
             all: function(callback) {
                 return self.request(rest.get, '/timeallocations/jobtasks', {}, function(result) {
+                    callback(result);
+                });
+            },
+            allBlocks: function(callback) {
+                return self.request(rest.get, '/timeallocations/calendarblocks', {}, function(result) {
                     callback(result);
                 });
             },

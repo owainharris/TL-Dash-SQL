@@ -22,25 +22,27 @@ const tl = new TrafficLive({
 });
 
 
+module.exports = function projCall() {
 
+    //Call TL API and write response to JSON
+    tl.projects.all(function(response, key, value) {
+        var drop = connection.query('TRUNCATE TABLE projects');
 
-//Call TL API and write response to JSON
-tl.projects.all(function(response, key, value) {
-    var drop = connection.query('TRUNCATE TABLE projects');
+        var result = value;
 
-    var result = value;
-
-    var arr1 = response.data.map(function(item) {
-        return [item.id, item.name, item.clientCRMEntryId];
-    });
-
-    var query = connection.query('INSERT INTO projects(projectID, projectDescription, fk_clientID) VALUES ?', [arr1],
-        function(error, results, fields) {
-            if (error) throw error;
-            else {
-                console.log("Imported PROJECTS to MySQL!");
-                connection.end();
-            }
+        var arr1 = response.data.map(function(item) {
+            return [item.id, item.name, item.clientCRMEntryId];
         });
 
-});
+        var query = connection.query('INSERT INTO projects(projectID, projectDescription, fk_clientID) VALUES ?', [arr1],
+            function(error, results, fields) {
+                if (error) throw error;
+                else {
+                    console.log("Imported PROJECTS to MySQL!");
+                    connection.end();
+                }
+            });
+
+    });
+
+};

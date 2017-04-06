@@ -1,0 +1,94 @@
+[
+   {
+      "@class": "com.sohnar.trafficlite.transfer.project.JobTaskTO",
+      "id": 16839579,
+      "version": 3,
+      "dateCreated": "2017-03-29T01:57:48.370+0000",
+      "dateModified": "2017-03-29T02:48:05.649+0000",
+      "uuid": "2DDA700A-F41A-4F25-B64C-17C86B2D3C1D",
+      "description": "T3",
+      "externalNote": null,
+      "internalNote": null,
+      "quantity": 1,
+      "multiplier": 0,
+      "cost": {
+         "amountString": 10,
+         "currencyType": "AUD"
+      },
+      "rate": {
+         "amountString": 10,
+         "currencyType": "AUD"
+      },
+      "realisationRate": {
+         "amountString": 10,
+         "currencyType": "AUD"
+      },
+      "rateOtherCurrency": null,
+      "total": {
+         "amountString": 10,
+         "currencyType": "AUD"
+      },
+      "totalOtherCurrency": null,
+      "taxTypeId": {
+         "id": 582
+      },
+      "taxTypeTwoId": null,
+      "lineItemOrder": 3,
+      "chargeBandId": {
+         "id": 27925
+      },
+      "billLineItemOrder": 3,
+      "billType": "ESTIMATE",
+      "billableNet": {
+         "amountString": 0,
+         "currencyType": "AUD"
+      },
+      "billableNetOtherCurrency": null,
+      "excludeFromInvoice": false,
+      "externalData": null,
+      "jobId": 2172736,
+      "jobTaskCategory": "FEE",
+      "complete": false,
+      "jobTaskCompletionDate": null,
+      "studioAllocationMinutes": 60,
+      "taskDeadline": "2017-04-03T21:30:00.000+0000",
+      "taskStartDate": "2017-04-03T20:30:00.000+0000",
+      "jobStageUUID": null,
+      "jobStageDescription": null,
+      "durationMinutes": 0,
+      "totalTimeLoggedMinutes": 0,
+      "totalTimeLoggedBillableMinutes": 0,
+      "totalTimeEntryPersonalRate": null,
+      "totalTimeAllocatedMinutes": 0,
+      "dependancyId": null,
+      "dependancyTaskDeadline": null,
+      "jobTaskUserCategoryListItemId": {
+         "id": 1049
+      },
+      "jobTaskExternalCategoryListItemId": null,
+      "jobTaskPriorityListItemId": null,
+      "totalCostBillable": null,
+      "totalCostNonBillable": null,
+      "hierarchyOrder": 3,
+      "potentialValue": {
+         "amountString": 10,
+         "currencyType": "AUD"
+      },
+      "estimatedSellValue": {
+         "amountString": 10,
+         "currencyType": "AUD"
+      },
+      "realisationPercentage": 100,
+      "baselineQuantity": 0,
+      "baselineCost": null,
+      "baselineMultiplier": 0,
+      "baselineRate": null,
+      "baselineTotal": null,
+      "baselineRateOtherCurrency": null,
+      "baselineTotalOtherCurrency": null,
+      "jobTaskDependencies": [],
+      "retainerJobTaskId": null,
+      "baselineAllocations": [],
+      "maxResults": 1
+   }
+]

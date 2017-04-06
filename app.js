@@ -7,9 +7,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 
-// Used to connect to the MongoDB database
-var mongo = require('mongodb');
-
 var routes = require('./routes/index');
 var employeelist = require('./routes/employeelist');
 var joblist = require('./routes/joblist');
