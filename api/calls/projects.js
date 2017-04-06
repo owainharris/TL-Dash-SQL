@@ -26,7 +26,7 @@ module.exports = function projCall() {
 
     //Call TL API and write response to JSON
     tl.projects.all(function(response, key, value) {
-        var drop = connection.query('TRUNCATE TABLE projects');
+        //      var drop = connection.query('TRUNCATE TABLE projects');
 
         var result = value;
 
@@ -34,12 +34,12 @@ module.exports = function projCall() {
             return [item.id, item.name, item.clientCRMEntryId];
         });
 
-        var query = connection.query('INSERT INTO projects(projectID, projectDescription, fk_clientID) VALUES ?', [arr1],
+        var query = connection.query('INSERT IGNORE INTO projects(projectID, projectDescription, fk_clientID) VALUES ?', [arr1],
             function(error, results, fields) {
-                if (error) throw error;
+                if (error) console.log(error);
                 else {
                     console.log("Imported PROJECTS to MySQL!");
-                    connection.end();
+                    //   connection.end();
                 }
             });
 
