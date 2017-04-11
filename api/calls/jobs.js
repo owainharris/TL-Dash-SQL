@@ -31,10 +31,10 @@ module.exports = function jobsCall() {
         var result = value;
 
         var arr1 = response.data.map(function(item) {
-            return [item.id, item.jobNumber, item.jobStateType, item.jobBillingStateType, item.potentialValue.amountString, item.estimatedSellValue.amountString, item.jobDetailId];
+            return [item.id, item.jobNumber, item.jobStateType, item.jobBillingStateType, item.potentialValue.amountString, item.estimatedSellValue.amountString, item.billedNet, item.jobDetailId];
         });
 
-        var query = connection.query('INSERT IGNORE INTO jobs(jobID, jobNumber, jobStateType, jobBillingStateType, potentialValue, estimatedSellValue, fk_jobDetailId) VALUES ?', [arr1],
+        var query = connection.query('INSERT IGNORE INTO jobs(jobID, jobNumber, jobStateType, jobBillingStateType, potentialValue, estimatedSellValue, billedNet, fk_jobDetailId) VALUES ?', [arr1],
             function(error, results, fields) {
                 if (error) throw error;
                 else {

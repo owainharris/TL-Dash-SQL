@@ -3,7 +3,6 @@
 
 // Declare dependencies
 const mysql = require("mysql");
-const dateformat = require("dateformat");
 const TrafficLive = require('../lib/trafficLive.js');
 
 // Connection to MySQL
@@ -15,7 +14,6 @@ const connection = mysql.createConnection({
 });
 
 
-
 // Decalre API Auth
 const tl = new TrafficLive({
     email: 'owainh2@gmail.com',
@@ -24,24 +22,24 @@ const tl = new TrafficLive({
 });
 
 
+module.exports = function chargebandsCall() {
 
-module.exports = function entriesCall() {
-    //var drop = connection.query('DELETE FROM entries');
-    //Call TL API and write response to JSON
-    tl.entries.all(function(response, key, value) {
-        //    var drop = connection.query('DELETE FROM entries');
+    tl.chargebands.all(function(response, key, value) {
         var result = value;
+
         var arr1 = response.data.map(function(item) {
-            return [item.id, dateformat(item.dateCreated, 'yyyy-mm-dd'), item.minutes, item.timeEntryCost.amountString, item.trafficEmployeeId.id];
+            return [item.id, item.chargeBandType, item.name, item.cost.amountString, item.rate.amountString, item.multiplier];
         });
-        var query = connection.query('INSERT IGNORE INTO entries(entrieId, dateCreated, minutes, timeEntryCost, fk_trafficEmployeeID) VALUES ?', [arr1],
+
+        var query = connection.query('INSERT IGNORE INTO chargebands(chargeband_id, type, name, cost, rate, markup) VALUES ?', [arr1],
             function(error, results, fields) {
                 if (error) throw error;
                 else {
-                    console.log("Imported ENTRIES to MySQL!");
-                    //  connection.end();
+                    console.log("Imported CHARGEBANDS to MySQL!");
+                    //     connection.end();
                 }
             });
+
     });
 
 };

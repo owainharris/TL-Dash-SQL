@@ -5,13 +5,9 @@ var runAll = require('../api/calls/runAll.js');
 var drop = require('../api/calls/drop.js');
 
 
-
 setInterval(function() {
-    //   drop();
     runAll();
-}, 300000);
-
-
+}, 60000);
 
 
 router.get('/', function(req, res, next) {
@@ -39,6 +35,9 @@ router.get('/joblist', function(req, res) {
     connection.end();
 });
 
+
+
+
 router.get('/employeelist', function(req, res) {
 
     var connection = mysql.createConnection({
@@ -49,8 +48,8 @@ router.get('/employeelist', function(req, res) {
     });
 
 
-
-    var sql = 'SELECT * from employees';
+    var sorter = 'active';
+    var sql = 'SELECT * from employees ORDER BY ' + connection.escapeId(sorter);
     connection.connect();
 
     connection.query(sql, function(err, rows, fields) {
@@ -59,6 +58,31 @@ router.get('/employeelist', function(req, res) {
     });
     connection.end();
 });
+
+
+//Display Client List
+
+router.get('/clientlist', function(req, res) {
+
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'ok',
+        database: 'tl'
+    });
+
+
+
+    var sql = 'SELECT * from clients';
+    connection.connect();
+
+    connection.query(sql, function(err, rows, fields) {
+        if (err) throw err;
+        res.render('clientlist', { title: 'clientlist', rows: rows });
+    });
+    connection.end();
+});
+
 
 
 module.exports = router;

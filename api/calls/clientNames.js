@@ -18,18 +18,18 @@ const tl = new TrafficLive({
     pageSize: 500 //max 500
 });
 
-module.exports = function clientsCall() {
-    tl.clients.all(function(response, key, value) {
+module.exports = function clientsNameCall() {
+    tl.clientNames.all(function(response, key, value) {
         var result = value;
         var arr1 = response.data.map(function(item) {
-            return [item.id, item.name];
+            return [item.id, item.personalDetails.firstName, item.personalDetails.lastName];
         });
 
-        var query = connection.query('INSERT IGNORE INTO clients(clientID, clientName) VALUES ?', [arr1],
+        var query = connection.query('INSERT IGNORE INTO clientNames(clientEmployeeID, firstName, LastName) VALUES ?', [arr1],
             function(error, results, fields) {
                 if (error) throw error;
                 else {
-                    console.log("Imported CLIENTS to MySQL!");
+                    console.log("Imported CLIENT NAMES to MySQL!");
                     //  connection.end();
                 }
             });

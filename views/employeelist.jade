@@ -9,8 +9,10 @@ block content
       tr
         th First Name
         th Last Name
+        th Active
     tbody
       - each item in rows
         tr
           td= item.firstName
           td= item.lastName
+          td= item.active

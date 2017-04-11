@@ -25,19 +25,34 @@ module.exports = function empCall() {
     tl.employees.find('isResource|EQ|false', function(response, key, value) {
         //var alter1 = connection.query('ALTER TABLE entries DROP CONSTRAINT fk_trafficEmployeeID');
         // var alter2 = connection.query('ALTER TABLE entries CONSTRAINT fk_trafficEmployeeID');
-        //   var drop = connection.query('DELETE FROM employees');
+        // var drop = connection.query('DELETE FROM employees');
         var result = value;
         var arr1 = response.data.map(function(item) {
-            return [item.employeeDetails.id, item.active, item.employeeDetails.personalDetails.firstName, item.employeeDetails.personalDetails.lastName, item.employeeDetails.personalDetails.emailAddress, item.employeeDetails.costPerHour.amountString, item.employeeDetails.hoursWorkedPerDayBillableMinutes];
+            return [item.employeeDetails.id, item.active, item.employeeDetails.personalDetails.firstName, item.employeeDetails.personalDetails.lastName, item.employeeDetails.personalDetails.emailAddress, item.employeeDetails.costPerHour.amountString, item.employeeDetails.hoursWorkedPerDayBillableMinutes / 60];
         });
 
-        var query = connection.query('INSERT IGNORE INTO employees(pk_userId, active, firstName, lastName, emailAddress, costPerHour, minsBillable) VALUES ?', [arr1],
+        var query = connection.query('INSERT INTO employees(pk_userId, active, firstName, lastName, emailAddress, costPerHour, minsBillable) VALUES ?', [arr1],
             function(error, results, fields) {
                 if (error) console.log(error);
                 else {
                     console.log("Imported EMPLOYEES to MySQL!");
-                    //    connection.end();
                 }
             });
+
+        // var query2 = connection.query('UPDATE employees WHERE dateCreated=convert(datetime,convert(char(10),dateCreated,101)))// VALUES ?', [arr1],
+        //     function(error, results, fields) {
+        //         if (error) console.log(error);
+        //        else {
+        //            console.log("Imported EMPLOYEES to MySQL!");
+        //       }
+        //    });
+
+        //  var query2 = connection.query('UPDATE employees SET ? WHERE ?', [arr1],
+        //    function(err, rows) {
+        //       if (err)
+        //           console.log("Error Updating : %s ", err);
+        //   });
+
+
     });
 };

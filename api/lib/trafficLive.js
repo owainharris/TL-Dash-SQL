@@ -123,6 +123,18 @@ var trafficLive = function(options) {
                 });
             }
         },
+        clientNames: {
+            all: function(callback) {
+                return self.request(rest.get, '/crm/employee?type=CLIENT&windowSize=500', {}, function(result) {
+                    callback(result);
+                });
+            },
+            one: function(id, callback) {
+                return self.request(rest.get, '/crm/employee/' + id, {}, function(result) {
+                    callback(result);
+                });
+            }
+        },
         quotes: {
             all: function(callback) {
                 return self.request(rest.get, '/quote', {}, function(result) {

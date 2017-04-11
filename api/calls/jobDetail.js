@@ -1,6 +1,7 @@
 // Declare dependencies
 const mysql = require("mysql");
 const TrafficLive = require('../lib/trafficLive.js');
+const dateformat = require("dateformat");
 
 
 // Connection to MySQL
@@ -21,23 +22,24 @@ const tl = new TrafficLive({
 
 
 
+module.exports = function jonDetailCall() {
+    //Call TL API and write response to JSON
+    tl.jobs.allDetails(function(response, key, value) {
+        var drop = connection.query('DELETE FROM job_detail');
 
-//Call TL API and write response to JSON
-tl.jobs.allDetails(function(response, key, value) {
-    var drop = connection.query('DELETE FROM jobDetail');
-
-    var result = value;
-    var arr1 = response.data.map(function(item) {
-        return [item.id, item.dateCreated, item.description, item.name, item.jobTypeListItemId.id, item.accountManagerId, item.jobContactId];
-    });
-
-    var query = connection.query('INSERT INTO jobDetail(jobDetailId, dateCreated, jobDescription, jobName, fk_jobTypeListItemId, fk_jobOwnerID, fk_jobContactId) VALUES ?', [arr1],
-        function(error, results, fields) {
-            if (error) throw error;
-            else {
-                console.log("Imported JOBDETAIL to MySQL!");
-                connection.end();
-            }
+        var result = value;
+        var arr1 = response.data.map(function(item) {
+            return [item.id, dateformat(item.dateCreated, 'yyyy-mm-dd'), item.description, item.name, item.jobTypeListItemId.id, item.accountManagerId, item.jobContactId, item.ownerProjectId];
         });
 
-});
+        var query = connection.query('INSERT IGNORE INTO job_detail(jobDetailId, dateCreated, jobDescription, jobName, fk_jobTypeListItemId, fk_jobOwnerID, fk_jobContactId, fk_projectId) VALUES ?', [arr1],
+            function(error, results, fields) {
+                if (error) throw error;
+                else {
+                    console.log("Imported JOBDETAIL to MySQL!");
+                    //    connection.end();
+                }
+            });
+
+    });
+};
