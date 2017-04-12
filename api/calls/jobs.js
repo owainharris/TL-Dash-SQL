@@ -1,5 +1,6 @@
-/* jshint node: true, deve: true, browserify: true */
+/* jshint node: true, browserify: true */
 'use strict';
+/*jshint esversion: 6 */
 
 // Declare dependencies
 const mysql = require("mysql");
@@ -31,7 +32,9 @@ module.exports = function jobsCall() {
         var result = value;
 
         var arr1 = response.data.map(function(item) {
-            return [item.id, item.jobNumber, item.jobStateType, item.jobBillingStateType, item.potentialValue.amountString, item.estimatedSellValue.amountString, item.billedNet, item.jobDetailId];
+            return [item.id, item.jobNumber, item.jobStateType, item.jobBillingStateType,
+                item.potentialValue.amountString, item.estimatedSellValue.amountString, item.billedNets, item.jobDetailId
+            ];
         });
 
         var query = connection.query('INSERT IGNORE INTO jobs(jobID, jobNumber, jobStateType, jobBillingStateType, potentialValue, estimatedSellValue, billedNet, fk_jobDetailId) VALUES ?', [arr1],

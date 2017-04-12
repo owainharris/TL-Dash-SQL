@@ -1,5 +1,6 @@
-/* jshint node: true, deve: true, browserify: true */
+/* jshint node: true, browserify: true */
 'use strict';
+/*jshint esversion: 6 */
 
 // Declare dependencies
 const mysql = require("mysql");
@@ -65,7 +66,7 @@ module.exports = function createFK() {
         function(error, results, fields) {
             if (error) throw error;
             else {
-                console.log("Created FK's for Client Details");
+                console.log("Created FK's for Clients");
             }
         });
 
@@ -74,7 +75,7 @@ module.exports = function createFK() {
         function(error, results, fields) {
             if (error) throw error;
             else {
-                console.log("Created FK's for Client Details");
+                console.log("Created FK's for Client Names");
             }
         });
 
@@ -82,9 +83,18 @@ module.exports = function createFK() {
         function(error, results, fields) {
             if (error) throw error;
             else {
-                console.log("Created FK's for Project Details");
+                console.log("Created FK's for Project");
             }
         });
+
+    var create_emp_job_detail_fk = connection.query('alter table employees add constraint emp_job_detail foreign key (pk_userID) references tl.job_detail (fk_jobOwnerID) ON UPDATE No Action',
+        function(error, results, fields) {
+            if (error) throw error;
+            else {
+                console.log("Created FK's for Employees");
+            }
+        });
+
 
 
     var enableChecks = connection.query('SET FOREIGN_KEY_CHECKS = 1;',

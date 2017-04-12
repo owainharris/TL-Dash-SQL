@@ -1,5 +1,7 @@
 /* jshint node: true, deve: true, browserify: true */
+/*jshint esversion: 6 */
 'use strict';
+
 var rest = require('../../node_modules/restler');
 
 

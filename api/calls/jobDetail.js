@@ -1,3 +1,7 @@
+/* jshint node: true, browserify: true */
+'use strict';
+/*jshint esversion: 6 */
+
 // Declare dependencies
 const mysql = require("mysql");
 const TrafficLive = require('../lib/trafficLive.js');

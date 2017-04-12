@@ -1,3 +1,7 @@
+/* jshint node: true, browserify: true */
+'use strict';
+/*jshint esversion: 6 */
+
 // Declare dependencies
 const mysql = require("mysql");
 const TrafficLive = require('../lib/trafficLive.js');
@@ -31,7 +35,7 @@ module.exports = function empCall() {
             return [item.employeeDetails.id, item.active, item.employeeDetails.personalDetails.firstName, item.employeeDetails.personalDetails.lastName, item.employeeDetails.personalDetails.emailAddress, item.employeeDetails.costPerHour.amountString, item.employeeDetails.hoursWorkedPerDayBillableMinutes / 60];
         });
 
-        var query = connection.query('INSERT INTO employees(pk_userId, active, firstName, lastName, emailAddress, costPerHour, minsBillable) VALUES ?', [arr1],
+        var query = connection.query('INSERT IGNORE INTO employees(pk_userId, active, firstName, lastName, emailAddress, costPerHour, minsBillable) VALUES ?', [arr1],
             function(error, results, fields) {
                 if (error) console.log(error);
                 else {

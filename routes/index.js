@@ -1,13 +1,17 @@
-var express = require('express');
-var router = express.Router();
-var mysql = require("mysql");
-var runAll = require('../api/calls/runAll.js');
-var drop = require('../api/calls/drop.js');
+/* jshint node: true, browserify: true */
+'use strict';
+/*jshint esversion: 6 */
+
+const express = require('express');
+const router = express.Router();
+const mysql = require("mysql");
+const runAll = require('../api/calls/runAll.js');
+const drop = require('../api/calls/drop.js');
 
 
 setInterval(function() {
     runAll();
-}, 60000);
+}, 30000);
 
 
 router.get('/', function(req, res, next) {

@@ -1,5 +1,6 @@
-/* jshint node: true, deve: true, browserify: true */
+/* jshint node: true, browserify: true */
 'use strict';
+/*jshint esversion: 6 */
 
 // Declare dependencies
 const mysql = require("mysql");
@@ -25,6 +26,7 @@ const tl = new TrafficLive({
 
 
 module.exports = function dropData() {
+    var dropChargebands = connection.query('DELETE FROM chargebands');
     var dropEntries = connection.query('DELETE FROM entries');
     var dropClients = connection.query('DELETE FROM clients');
     var dropNames = connection.query('DELETE FROM clientNames');

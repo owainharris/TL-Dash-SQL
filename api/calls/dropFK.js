@@ -1,5 +1,6 @@
-/* jshint node: true, deve: true, browserify: true */
+/* jshint node: true, browserify: true */
 'use strict';
+/*jshint esversion: 6 */
 
 // Declare dependencies
 const mysql = require("mysql");
@@ -26,7 +27,7 @@ const tl = new TrafficLive({
 
 module.exports = function dropFK() {
 
-    var query = connection.query('alter table employees drop foreign key fkemp',
+    var query1 = connection.query('alter table employees drop foreign key fkemp',
         function(error, results, fields) {
             if (error) throw error;
             else {
@@ -35,7 +36,7 @@ module.exports = function dropFK() {
             }
         });
 
-    var query = connection.query('alter table jobs drop foreign key fkjobtsk',
+    var query2 = connection.query('alter table jobs drop foreign key fkjobtsk',
         function(error, results, fields) {
             if (error) throw error;
             else {
@@ -44,7 +45,7 @@ module.exports = function dropFK() {
             }
         });
 
-    var query = connection.query('alter table job_detail drop foreign key jobdet',
+    var query3 = connection.query('alter table job_detail drop foreign key jobdet',
         function(error, results, fields) {
             if (error) throw error;
             else {
@@ -53,7 +54,7 @@ module.exports = function dropFK() {
             }
         });
 
-    var query = connection.query('alter table clients drop foreign key cnt_prj',
+    var query4 = connection.query('alter table clients drop foreign key cnt_prj',
         function(error, results, fields) {
             if (error) throw error;
             else {
@@ -62,7 +63,7 @@ module.exports = function dropFK() {
             }
         });
 
-    var query = connection.query('alter table clientNames drop foreign key clijob',
+    var query5 = connection.query('alter table clientNames drop foreign key clijob',
         function(error, results, fields) {
             if (error) throw error;
             else {
@@ -71,11 +72,21 @@ module.exports = function dropFK() {
             }
         });
 
-    var query = connection.query('alter table projects drop foreign key prjjobdet',
+    var query6 = connection.query('alter table projects drop foreign key prjjobdet',
         function(error, results, fields) {
             if (error) throw error;
             else {
                 console.log("Dropped FK's from Client Names");
+                //     connection.end();
+            }
+        });
+
+
+    var query7 = connection.query('alter table employees drop foreign key emp_job_detail',
+        function(error, results, fields) {
+            if (error) throw error;
+            else {
+                console.log("Dropped FK's from Employees");
                 //     connection.end();
             }
         });

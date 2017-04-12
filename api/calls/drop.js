@@ -1,35 +1,39 @@
-    // Declare dependencies
-    const mysql = require("mysql");
-    const TrafficLive = require('../lib/trafficLive.js');
+/* jshint node: true, browserify: true */
+'use strict';
+/*jshint esversion: 6 */
 
-    // Connection to MySQL
-    const connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'ok',
-        database: 'tl',
-        connectionLimit: 15,
-        queueLimit: 30,
-        acquireTimeout: 1000000
-    });
+// Declare dependencies
+const mysql = require("mysql");
+const TrafficLive = require('../lib/trafficLive.js');
 
-
-    // Decalre API Auth
-    const tl = new TrafficLive({
-        email: 'owainh2@gmail.com',
-        token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
-        pageSize: 500 //max 500
-    });
-
-    module.exports = function drop() {
+// Connection to MySQL
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'ok',
+    database: 'tl',
+    connectionLimit: 15,
+    queueLimit: 30,
+    acquireTimeout: 1000000
+});
 
 
-        var dropEmployees = connection.query('TRUNCATE TABLE employees');
-        var dropJobs = connection.query('TRUNCATE TABLE jobs');
-        var dropProjects = connection.query('TRUNCATE TABLE projects');
+// Decalre API Auth
+const tl = new TrafficLive({
+    email: 'owainh2@gmail.com',
+    token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+    pageSize: 500 //max 500
+});
+
+module.exports = function drop() {
 
 
-        /*
+    var dropEmployees = connection.query('TRUNCATE TABLE employees');
+    var dropJobs = connection.query('TRUNCATE TABLE jobs');
+    var dropProjects = connection.query('TRUNCATE TABLE projects');
+
+
+    /*
     dropJobs = function(error) {
         var dropJobs = connection.query('TRUNCATE TABLE jobs');
         if (error) throw error;
@@ -47,4 +51,4 @@
         }
     };
 */
-    };
+};

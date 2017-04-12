@@ -1,0 +1,9 @@
+SELECT fk_trafficEmployeeID, firstName, lastName, costPerHour, minsBillable, sum(minutes) as total_hours FROM entries JOIN employees on fk_trafficEmployeeID = employees.pk_userID GROUP BY fk_trafficEmployeeID, firstName, lastName
+
+
+SELECT fk_jobDetailId, jobID, jobNumber, jobName, firstName, lastName FROM jobs JOIN job_detail on fk_jobDetailId = job_detail.jobDetailId JOIN clientNames on clientEmployeeID = job_detail.`fk_jobContactId`
+
+SELECT fk_jobDetailId, jobID, jobNumber, jobName, clientName, clientNames.`firstName` , clientNames.`lastName` FROM jobs JOIN job_detail on fk_jobDetailId = job_detail.jobDetailId JOIN clientNames on clientEmployeeID = job_detail.`fk_jobContactId` JOIN projects on projectID = job_detail.`fk_projectId` JOIN clients on `clientID` = projects.`fk_clientID`
+
+
+SELECT jobNumber, jobName, clientName, `jobStateType`, `jobBillingStateType`, estimatedSellValue, potentialValue, billedNet FROM jobs JOIN job_detail on fk_jobDetailId = job_detail.jobDetailId JOIN clientNames on clientEmployeeID = job_detail.`fk_jobContactId` JOIN projects on projectID = job_detail.`fk_projectId` JOIN clients on `clientID` = projects.`fk_clientID`
