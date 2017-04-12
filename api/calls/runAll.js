@@ -1,7 +1,3 @@
-/* jshint node: true, browserify: true */
-'use strict';
-/*jshint esversion: 6 */
-
 module.exports = function runAll() {
 
     var dropFK = require('./dropFK.js');

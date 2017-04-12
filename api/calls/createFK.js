@@ -3,12 +3,12 @@
 /*jshint esversion: 6 */
 
 // Declare dependencies
-const mysql = require("mysql");
-const dateformat = require("dateformat");
-const TrafficLive = require('../lib/trafficLive.js');
+var mysql = require("mysql");
+var dateformat = require("dateformat");
+var TrafficLive = require('../lib/trafficLive.js');
 
 // Connection to MySQL
-const connection = mysql.createConnection({
+var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'ok',
@@ -18,12 +18,11 @@ const connection = mysql.createConnection({
 
 
 // Decalre API Auth
-const tl = new TrafficLive({
+var tl = new TrafficLive({
     email: 'owainh2@gmail.com',
     token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
     pageSize: 500 //max 500
 });
-
 
 module.exports = function createFK() {
 
