@@ -21,14 +21,14 @@ var tl = new TrafficLive({
 });
 
 
-module.exports = function dropData() {
-    var dropChargebands = connection.query('DELETE FROM chargebands');
-    var dropEntries = connection.query('DELETE FROM entries');
-    var dropClients = connection.query('DELETE FROM clients');
-    var dropNames = connection.query('DELETE FROM clientNames');
-    var dropProjects = connection.query('DELETE FROM projects');
-    var dropJobDetail = connection.query('DELETE FROM job_detail');
-    var dropJobs = connection.query('DELETE FROM jobs');
-    var dropTasks = connection.query('DELETE FROM tasks');
-    var dropEmployees = connection.query('DELETE FROM employees');
-};
+//module.exports = function dropData() {
+var dropChargebands = connection.query('DELETE FROM chargebands');
+var dropEntries = connection.query('DELETE FROM entries');
+var dropClients = connection.query('DELETE FROM clients');
+var dropNames = connection.query('DELETE FROM clientNames');
+var dropProjects = connection.query('DELETE FROM projects');
+var dropJobDetail = connection.query('DELETE FROM job_detail');
+var dropJobs = connection.query('DELETE FROM jobs');
+var dropTasks = connection.query('DELETE FROM tasks');
+var dropEmployees = connection.query('DELETE FROM employees');
+//};

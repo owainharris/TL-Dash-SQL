@@ -27,8 +27,7 @@ const tl = new TrafficLive({
 
 
 //Call TL API and write response to JSON
-tl.allocations.allBlocks(function(response, key, value) {
-    var drop = connection.query('TRUNCATE TABLE allocations');
+tl.allocations.recent(function(response, key, value) {
 
     var result = value;
     var arr1 = response.data.map(function(item) {

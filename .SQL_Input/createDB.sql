@@ -36,12 +36,9 @@ create table employees
 	lastName char(30) null,
 	emailAddress varchar(45) null,
 	costPerHour decimal(15,2) null,
-	minsBillable int(4) null
+	hoursWorked int null,
+	hoursBillable int(4) null
 )
-;
-
-create index pk_userID
-	on employees (pk_userID)
 ;
 
 create table entries
@@ -86,9 +83,18 @@ create index fk_projectId
 	on job_detail (fk_projectId)
 ;
 
+create index fk_jobOwnerID
+	on job_detail (fk_jobOwnerID)
+;
+
 alter table clientNames
 	add constraint clijob
 		foreign key (clientEmployeeID) references tl.job_detail (fk_jobContactId)
+;
+
+alter table employees
+	add constraint emp_job_detail
+		foreign key (pk_userID) references tl.job_detail (fk_jobOwnerID)
 ;
 
 create table jobs
@@ -132,11 +138,6 @@ create index fk_clientID
 alter table clients
 	add constraint cnt_prj
 		foreign key (clientID) references tl.projects (fk_clientID)
-;
-
-alter table employees
-	add constraint emp_job_detail
-		foreign key (pk_userID) references tl.job_detail (fk_jobOwnerID)
 ;
 
 create table tasks

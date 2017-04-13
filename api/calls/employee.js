@@ -6,7 +6,7 @@
 const mysql = require("mysql");
 const TrafficLive = require('../lib/trafficLive.js');
 
-// Connection to MySQL
+// Declare connection to MySQL
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -23,22 +23,22 @@ const tl = new TrafficLive({
 });
 
 
-module.exports = function empCall() {
+//Exports function below to runAll.js.
+//module.exports = function empCall() {
 
-    //Call TL API and write response to SQL
-    tl.employees.find('isResource|EQ|false', function(response, key, value) {
+//Call TL API from ../lib/trafficLive.js
+tl.employees.find('isResource|EQ|false&filter=emailAddress|EQ|"owainh2@gmail.com"', (response, key) => {
 
-        var result = value;
-        var arr1 = response.data.map(function(item) {
-            return [item.employeeDetails.id, item.active, item.employeeDetails.personalDetails.firstName, item.employeeDetails.personalDetails.lastName, item.employeeDetails.personalDetails.emailAddress, item.employeeDetails.costPerHour.amountString, item.employeeDetails.hoursWorkedPerDayMinutes / 60 * 5, item.employeeDetails.hoursWorkedPerDayBillableMinutes / 60 * 5];
+    //Map the returend data to an array ( / 60 * 5 is deviding minutes to hours, multiplying days to a week.)
+    let arr1 = response.data.map(item => [item.employeeDetails.id, item.active, item.employeeDetails.personalDetails.firstName, item.employeeDetails.personalDetails.lastName, item.employeeDetails.personalDetails.emailAddress, item.employeeDetails.costPerHour.amountString, item.employeeDetails.hoursWorkedPerDayMinutes / 60 * 5, item.employeeDetails.hoursWorkedPerDayBillableMinutes / 60 * 5]);
+
+    //push array to MySQL
+    let query = connection.query('INSERT IGNORE INTO employees(pk_userId, active, firstName, lastName, emailAddress, costPerHour, hoursWorked, hoursBillable) VALUES ?', [arr1],
+        (error, results, fields) => {
+            if (error) console.log(error);
+            else {
+                console.log("Imported " + arr1.length + " EMPLOYEES to MySQL!" + '\n');
+            }
         });
-
-        var query = connection.query('INSERT IGNORE INTO employees(pk_userId, active, firstName, lastName, emailAddress, costPerHour, hoursWorked, hoursBillable) VALUES ?', [arr1],
-            function(error, results, fields) {
-                if (error) console.log(error);
-                else {
-                    console.log("Imported EMPLOYEES to MySQL!");
-                }
-            });
-    });
-};
+});
+//};

@@ -1,7 +1,3 @@
-/* jshint node: true, browserify: true */
-'use strict';
-/*jshint esversion: 6 */
-
 // Declare dependencies
 var mysql = require("mysql");
 var dateformat = require("dateformat");

@@ -339,7 +339,7 @@ trafficLive.prototype.request = function(fn, uri, q, callback) {
 
                     payload.data = self.results;
                     payload.count = self.results.length;
-                    console.log(self.results.length + ' of ' + result.maxResults);
+                    console.log('\n' + "Retrieved " + self.results.length + ' of ' + result.maxResults + " From API");
                     callback(payload);
                 }
 
