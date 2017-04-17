@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require("mysql");
-var runAll = require('../api/calls/runAll.js');
-var drop = require('../api/calls/drop.js');
+var runAll = require('../data/api/runAll.js');
+//var drop = require('../api/calls/drop.js');
 
 
 setTimeout(function() {
