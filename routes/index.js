@@ -7,7 +7,7 @@ var runAll = require('../data/api/runAll.js');
 
 setTimeout(function() {
     runAll();
-}, 5000);
+}, 500000);
 
 
 router.get('/', function(req, res, next) {
