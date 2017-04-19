@@ -26,24 +26,18 @@ module.exports = function createFK() {
         function(error, results, fields) {
             if (error) throw error;
             else {
-                console.log("Dropped FK Checking");
+                console.log("Dropped Constraint Checking!");
             }
         });
 
     var create_fkemp_fk = connection.query('alter table employees add constraint fkemp foreign key (pk_userID) references tl.entries (fk_trafficEmployeeID) ON UPDATE No Action',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Created FK's for Entries");
-            }
         });
 
     var create_fkjobtsk_fk = connection.query('alter table jobs add constraint fkjobtsk foreign key (jobID) references tl.tasks (fk_jobId) ON UPDATE No Action',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Created FK's for Jobs");
-            }
         });
 
 
@@ -51,42 +45,30 @@ module.exports = function createFK() {
     var create_jobdet_fk = connection.query('alter table job_detail add constraint jobdet foreign key (jobDetailId) references tl.jobs (fk_jobDetailId) ON UPDATE No Action',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Created FK's for Job Details");
-            }
         });
 
 
     var create_cntprj_fk = connection.query('alter table clients add constraint cnt_prj foreign key (clientID) references tl.projects (fk_clientID) ON UPDATE No Action',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Created FK's for Clients");
-            }
         });
 
 
     var create_clijob_fk = connection.query('alter table clientNames add constraint clijob foreign key (clientEmployeeID) references tl.job_detail (fk_jobContactId) ON UPDATE No Action',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Created FK's for Client Names");
-            }
         });
 
     var create_prjjobdet_fk = connection.query('alter table projects add constraint prjjobdet foreign key (projectID) references tl.job_detail (jobDetailId) ON UPDATE No Action',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Created FK's for Project");
-            }
         });
 
     var create_emp_job_detail_fk = connection.query('alter table employees add constraint emp_job_detail foreign key (pk_userID) references tl.job_detail (fk_jobOwnerID) ON UPDATE No Action',
         function(error, results, fields) {
             if (error) throw error;
             else {
-                console.log("Created FK's for Employees");
+                console.log("Created Constraints!");
             }
         });
 
@@ -96,7 +78,7 @@ module.exports = function createFK() {
         function(error, results, fields) {
             if (error) throw error;
             else {
-                console.log("Started FK Checking");
+                console.log("Started Constraint Checking!");
             }
         });
 

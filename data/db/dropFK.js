@@ -26,64 +26,37 @@ module.exports = function dropFK() {
     var query1 = connection.query('alter table employees drop foreign key fkemp',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Dropped FK's from Entries");
-            }
         });
 
     var query2 = connection.query('alter table jobs drop foreign key fkjobtsk',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Dropped FK's from Jobs");
-                //     connection.end();
-            }
         });
 
     var query3 = connection.query('alter table job_detail drop foreign key jobdet',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Dropped FK's from Job Details");
-                //     connection.end();
-            }
         });
 
     var query4 = connection.query('alter table clients drop foreign key cnt_prj',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Dropped FK's from Clients");
-                //     connection.end();
-            }
         });
 
     var query5 = connection.query('alter table clientNames drop foreign key clijob',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Dropped FK's from Client Names");
-                //     connection.end();
-            }
         });
 
     var query6 = connection.query('alter table projects drop foreign key prjjobdet',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Dropped FK's from Client Names");
-                //     connection.end();
-            }
         });
 
 
     var query7 = connection.query('alter table employees drop foreign key emp_job_detail',
         function(error, results, fields) {
             if (error) throw error;
-            else {
-                console.log("Dropped FK's from Employees");
-                //     connection.end();
-            }
         });
-
+    console.log("Dropped Constraints!" + '\n');
 };

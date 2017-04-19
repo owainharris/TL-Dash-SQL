@@ -31,4 +31,5 @@ module.exports = function dropData() {
     var dropJobs = connection.query('DELETE FROM jobs');
     var dropTasks = connection.query('DELETE FROM tasks');
     var dropEmployees = connection.query('DELETE FROM employees');
+    console.log("Data dropped successfully!" + '\n');
 };
