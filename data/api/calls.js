@@ -7,6 +7,9 @@ const TrafficLive = require('../lib/trafficLive.js');
 const mysql = require("mysql");
 //const connection = require('../db/connect.js');
 const dateformat = require("dateformat");
+var EventEmitter = require('events').EventEmitter;
+const assert = require('assert');
+const execSync = require('child_process').execSync;
 
 // Connection to MySQL
 const connection = mysql.createConnection({
@@ -16,14 +19,12 @@ const connection = mysql.createConnection({
     database: 'tl'
 });
 
-
-
 module.exports = {
 
     employees: function employees() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'helen.young@moosetoys.com',
+            token: 'Oo9rVmllo5BQBxyeOZSvGQv0Q0DVzar2O9NWjXbD',
             pageSize: 500 //max 500
         });
         tl.employees.all((response, key) => {
@@ -37,6 +38,7 @@ module.exports = {
                 });
         });
     },
+
 
     chargebands: function chargebands() {
         const tl = new TrafficLive({
@@ -166,12 +168,12 @@ module.exports = {
 
     entries: function entries() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'helen.young@moosetoys.com',
+            token: 'Oo9rVmllo5BQBxyeOZSvGQv0Q0DVzar2O9NWjXbD',
             pageSize: 500 //max 500
         });
-        tl.entries.all((response, key) => {
-            const array = response.data.map(item => [item.id, dateformat(item.dateCreated, 'yyyy-mm-dd'), item.minutes, item.timeEntryCost.amountString, item.trafficEmployeeId.id]);
+        tl.entries.recent((response, key) => {
+            const array = response.data.map(item => [item.id, dateformat(item.endTime, 'yyyy-mm-dd'), item.minutes / 60, item.timeEntryCost.amountString, item.trafficEmployeeId.id]);
             const query = connection.query('INSERT IGNORE INTO entries(entrieId, dateCreated, minutes, timeEntryCost, fk_trafficEmployeeID) VALUES ?', [array],
                 (error, results, fields) => {
                     if (error) console.log(error);
@@ -200,16 +202,4 @@ function allocations() {
             });
     });
 }
-*/
-
-/*
-module.exports.employees = employees();
-module.exports.chargebands = chargebands();
-module.exports.chargebands = clients();
-module.exports.chargebands = clientNames();
-module.exports.chargebands = projects();
-module.exports.chargebands = jobDetails();
-module.exports.chargebands = jobs();
-module.exports.chargebands = tasks();
-module.exports.chargebands = entries();
 */

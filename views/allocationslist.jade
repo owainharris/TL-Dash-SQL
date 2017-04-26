@@ -3,21 +3,5 @@ extends layout
 block content
   .container
     h1 Allocations
-    .center
-  table.table.table-striped
-    thead
-      tr
-        th First Name
-        th Last Name
-        th Job
-        th Task
-        th Duration
-    each allocation in allocationslist
-      tr#allocation_list_item
-        td #{allocation.trafficEmployeeFirstName}
-        td #{allocation.trafficEmployeeLastName}
-        td #{allocation.jobNumberSearchField}
-        td #{allocation.taskDescription}
-        td #{allocation.durationInMinutes}
 
 
