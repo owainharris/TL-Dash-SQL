@@ -25,7 +25,7 @@ module.exports = function createData() {
     connection.query('SELECT firstName, sum(minutes) as "Worked",(hoursWorked) AS "Expected Hours" FROM entries JOIN employees on fk_trafficEmployeeID = employees.pk_userID WHERE YEARWEEK(dateCreated) = YEARWEEK(NOW()) GROUP BY fk_trafficEmployeeID, firstName, lastName',
         function(error, results, fields) {
             if (!error) {
-                fs.writeFileSync('data/json/employees.json', JSON.stringify(results));
+                // fs.writeFileSync('data/json/employees.json', JSON.stringify(results));
                 csv.writeToPath("data/csv/employees.csv", results, { headers: true })
                     .on("finish", function() {
                         console.log("done!");
@@ -34,6 +34,59 @@ module.exports = function createData() {
                 throw error;
             }
         });
+
+
+    connection.query('SELECT DATE(earliestIntervalStart) as datetime, (COUNT(*)) AS count FROM allocations GROUP BY earliestIntervalStart',
+        function(error, results, fields) {
+            if (!error) {
+                csv.writeToPath("data/csv/allocations.csv", results, { headers: true })
+                    .on("finish", function() {
+                        console.log("done!");
+                    });
+            } else {
+                throw error;
+            }
+        });
+
+    // COUNT JOBS IN PROGRESS
+    connection.query('SELECT jobStateType, COUNT(*) AS value FROM jobs WHERE jobStateType = "PROGRESS";',
+        function(error, results, fields) {
+            if (!error) {
+                csv.writeToPath("data/csv/jobs.csv", results, { headers: true })
+                    .on("finish", function() {
+                        console.log("done!");
+                    });
+            } else {
+                throw error;
+            }
+        });
+
+    // COUNT JOBS DEADLINE THIS MONTH
+    connection.query('SELECT "Deadline Month", COUNT(internalDeadline) AS value FROM jobs WHERE MONTH(internalDeadline) = MONTH(CURDATE()) AND YEAR(internalDeadline) = YEAR(CURDATE()) ORDER BY internalDeadline',
+        function(error, results, fields) {
+            if (!error) {
+                csv.writeToPath("data/csv/jobs_month.csv", results, { headers: true })
+                    .on("finish", function() {
+                        console.log("done!");
+                    });
+            } else {
+                throw error;
+            }
+        });
+
+    // COUNT JOBS DEADLINE THIS WEEK
+    connection.query('SELECT "Deadline Week", COUNT(internalDeadline) AS value FROM jobs WHERE WEEK(internalDeadline) = WEEK(CURDATE()) AND YEAR(internalDeadline) = YEAR(CURDATE()) ORDER BY internalDeadline',
+        function(error, results, fields) {
+            if (!error) {
+                csv.writeToPath("data/csv/jobs_week.csv", results, { headers: true })
+                    .on("finish", function() {
+                        console.log("done!");
+                    });
+            } else {
+                throw error;
+            }
+        });
+
 
 
     console.log("Queries saved to file" + '\n');
