@@ -11,7 +11,7 @@ module.exports = function runAll() {
     var createFK = require('../db/createFK.js');
     var createData = require('../db/createData.js');
 
-    dropFK();
+    // dropFK();
 
     setTimeout(function() {
         dropData();
@@ -25,10 +25,10 @@ module.exports = function runAll() {
         // calls.clientNames();
         // calls.projects();
         //  calls.jobDetails();
-        calls.jobs();
+        //calls.jobs();
         // calls.tasks();
-        calls.entries();
-        calls.allocations();
+        //calls.entries();
+        //calls.allocations();
     }, 3000);
 
 
