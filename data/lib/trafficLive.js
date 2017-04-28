@@ -3,7 +3,6 @@
 'use strict';
 
 var rest = require('../../node_modules/restler');
-var auth = require('./auth.js');
 var moment = require("moment");
 
 
@@ -295,13 +294,6 @@ trafficLive.prototype.request = function(fn, uri, q, callback) {
         message: '',
         count: 0
     };
-
-    const TrafficLive = require('./trafficLive.js');
-    const tl = new TrafficLive({
-        email: 'owainh2@gmail.com',
-        token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
-        pageSize: 500 //max 500
-    });
 
     fn(request, options)
         .on('400', function() {

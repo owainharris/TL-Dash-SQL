@@ -1,5 +1,6 @@
 // Imports all the modules needed
 var express = require('express');
+var router = express.Router();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -9,7 +10,6 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var timesheets = require('./routes/timesheets');
-var job_gauges = require('./routes/job_gauges');
 var jobs_all = require('./routes/jobs_all');
 var jobs_all_weeks = require('./routes/jobs_all_weeks');
 var jobs_all_months = require('./routes/jobs_all_months');
@@ -36,7 +36,6 @@ app.use(express.static(path.join(__dirname, 'data')));
 // The route files then render the page
 app.use('/', routes);
 app.use('/timesheets', timesheets);
-app.use('/job_gauges', job_gauges);
 app.use('/jobs_all', jobs_all);
 app.use('/jobs_all_weeks', jobs_all_weeks);
 app.use('/jobs_all_months', jobs_all_months);
