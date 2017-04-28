@@ -8,10 +8,6 @@ var bodyParser = require('body-parser');
 
 
 var routes = require('./routes/index');
-var employeelist = require('./routes/employeelist');
-var joblist = require('./routes/joblist');
-var allocationslist = require('./routes/allocationslist');
-var entrieslist = require('./routes/entrieslist');
 var timesheets = require('./routes/timesheets');
 var job_gauges = require('./routes/job_gauges');
 var jobs_all = require('./routes/jobs_all');
@@ -39,10 +35,6 @@ app.use(express.static(path.join(__dirname, 'data')));
 // routes/users.js for /users
 // The route files then render the page
 app.use('/', routes);
-app.use('/employeelist', employeelist);
-app.use('/joblist', joblist);
-app.use('/allocationslist', allocationslist);
-app.use('/entrieslist', entrieslist);
 app.use('/timesheets', timesheets);
 app.use('/job_gauges', job_gauges);
 app.use('/jobs_all', jobs_all);

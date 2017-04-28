@@ -36,50 +36,6 @@ router.get('/joblist', function(req, res) {
 
 
 
-router.get('/employeelist', function(req, res) {
-
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'ok',
-        database: 'tl'
-    });
-
-
-    var sorter = 'active';
-    var sql = 'SELECT * from employees ORDER BY ' + connection.escapeId(sorter);
-    //connection.connect();
-
-    connection.query(sql, function(err, rows, fields) {
-        if (err) throw err;
-        res.render('employeelist', { title: 'employeelist', rows: rows });
-    });
-    //connection.end();
-});
-
-
-//Display Client List
-
-router.get('/clientlist', function(req, res) {
-
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'ok',
-        database: 'tl'
-    });
-
-
-
-    var sql = 'SELECT * from clients';
-    //connection.connect();
-
-    connection.query(sql, function(err, rows, fields) {
-        if (err) throw err;
-        res.render('clientlist', { title: 'clientlist', rows: rows });
-    });
-    //connection.end();
-});
 
 
 //Display test List

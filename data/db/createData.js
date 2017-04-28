@@ -26,7 +26,7 @@ module.exports = function createData() {
         function(error, results, fields) {
             if (!error) {
                 // fs.writeFileSync('data/json/employees.json', JSON.stringify(results));
-                csv.writeToPath("data/csv/employees.csv", results, { headers: true })
+                csv.writeToPath("data/csv/timesheets.csv", results, { headers: true })
                     .on("finish", function() {
                         console.log("done!");
                     });
