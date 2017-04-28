@@ -2,11 +2,10 @@ var express = require('express');
 var router = express.Router();
 var mysql = require("mysql");
 //var runAll = require('../data/api/runAll.js');
-//var drop = require('../api/calls/drop.js');
 
-//setTimeout(function() {
-//    runAll();
-//}, 1000);
+//setInterval(function() {
+//   runAll();
+//}, 40000);
 
 
 router.get('/', function(req, res, next) {
@@ -85,7 +84,7 @@ router.get('/clientlist', function(req, res) {
 
 //Display test List
 
-router.get('/test', function(req, res) {
+router.get('/timesheets', function(req, res) {
     var connection = mysql.createConnection({
         host: 'localhost',
         user: 'root',
@@ -100,11 +99,102 @@ router.get('/test', function(req, res) {
 
     connection.query(sql, function(err, rows, fields) {
         if (err) throw err;
-        res.render('test', { title: 'test', rows: rows });
+        res.render('timesheets', { title: 'timesheets', rows: rows });
     });
     //connection.end();
 
 });
+
+
+
+//Display test test2
+
+router.get('/jobs_all_months', function(req, res) {
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'ok',
+        database: 'tl'
+    });
+
+
+
+    var sql = 'SELECT * from clients';
+    //connection.connect();
+
+    connection.query(sql, function(err, rows, fields) {
+        if (err) throw err;
+        res.render('jobs_all_months', { title: 'jobs_all_months', rows: rows });
+    });
+    //connection.end();
+
+});
+
+router.get('/jobs_all_weeks', function(req, res) {
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'ok',
+        database: 'tl'
+    });
+
+
+
+    var sql = 'SELECT * from clients';
+    //connection.connect();
+
+    connection.query(sql, function(err, rows, fields) {
+        if (err) throw err;
+        res.render('jobs_all_weeks', { title: 'jobs_all_weeks', rows: rows });
+    });
+    //connection.end();
+
+});
+
+router.get('/job_gauges', function(req, res) {
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'ok',
+        database: 'tl'
+    });
+
+
+
+    var sql = 'SELECT * from clients';
+    //connection.connect();
+
+    connection.query(sql, function(err, rows, fields) {
+        if (err) throw err;
+        res.render('job_gauges', { title: 'job_gauges', rows: rows });
+    });
+    //connection.end();
+
+});
+
+router.get('/jobs_all', function(req, res) {
+    var connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'ok',
+        database: 'tl'
+    });
+
+
+
+    var sql = 'SELECT * from clients';
+    //connection.connect();
+
+    connection.query(sql, function(err, rows, fields) {
+        if (err) throw err;
+        res.render('jobs_all', { title: 'jobs_all', rows: rows });
+    });
+    //connection.end();
+
+});
+
+
+
 
 
 

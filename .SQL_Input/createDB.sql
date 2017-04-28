@@ -77,7 +77,9 @@ create table jobs
 	jobID int(20) not null
 		primary key,
 	jobNumber varchar(25) null,
-	jobStateType char(15) null,
+	jobStateType date null,
+	internalDeadline date null,
+	internalDeadline varchar(25) null,
 	jobBillingStateType varchar(25) null,
 	potentialValue decimal(15,2) null,
 	estimatedSellValue decimal(15,2) null,

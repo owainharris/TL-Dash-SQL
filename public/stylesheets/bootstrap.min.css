@@ -4946,8 +4946,11 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 .nav-pills>li.active>a,
 .nav-pills>li.active>a:hover,
 .nav-pills>li.active>a:focus {
-    color: #ffffff;
-    background-color: #df691a
+    color: #000000;
+    background-color: #df691a;
+    font-weight: bold;
+    font-size: 28pt;
+    font-family: 'Source Sans Pro', serif;
 }
 
 .nav-stacked>li {

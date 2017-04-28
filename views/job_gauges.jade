@@ -1,0 +1,88 @@
+html
+  head
+    script(type='text/javascript', src='/javascripts/loader.js')
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    script(src='/javascripts/jquery.csv.js')
+    script(type='text/javascript').
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+      // grab the CSV
+      $.get('/csv/jobs.csv', function(csvString) {
+      // transform the CSV string into a 2-dimensional array
+      var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+      // this new DataTable object holds all the data
+      var data = new google.visualization.arrayToDataTable(arrayData);
+      var options = {
+      width: 700, height: 320,
+      redFrom: 100, redTo: 200,
+      yellowFrom:75, yellowTo: 100,
+      minorTicks: 5
+      };
+      // this view can select a subset of the data at a time
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0,1]);
+      var chart = new google.visualization.Gauge(document.getElementById('chart_div_jobs'));
+      chart.draw(data, options);
+      }
+      );
+      }
+    script(type='text/javascript').
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+      // grab the CSV
+      $.get('/csv/jobs_week.csv', function(csvString) {
+      var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+      var data = new google.visualization.arrayToDataTable(arrayData);
+      var options = {
+      width: 700, height: 320,
+      redFrom: 70, redTo: 100,
+      yellowFrom: 50, yellowTo: 70,
+      minorTicks: 5
+      };
+      // this view can select a subset of the data at a time
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0,1]);
+      var chart = new google.visualization.Gauge(document.getElementById('chart_div_weeks'));
+      chart.draw(data, options);
+      }
+      );
+      }
+    script(type='text/javascript').
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+      // grab the CSV
+      $.get('/csv/jobs_month.csv', function(csvString) {
+      var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+      var data = new google.visualization.arrayToDataTable(arrayData);
+      var options = {
+      width: 700, height: 320,
+      redFrom: 70, redTo: 100,
+      yellowFrom: 50, yellowTo: 70,
+      minorTicks: 5,
+      };
+      // this view can select a subset of the data at a time
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0,1]);
+      var chart = new google.visualization.Gauge(document.getElementById('chart_div_months'));
+      chart.draw(data, options);
+      }
+      );
+      }
+  body
+a(href='./jobs_all')
+  .row.jobs
+    .col-lg-4.col-md-4.col-sm-6.col-xs-4.meow.guagebottom
+          #chart_div_jobs(title='This is my tooltip' style='width: 400px; height: 120px;')
+    .col-lg-4.col-md-4.col-sm-6.col-xs-4.meow.guagebottom
+          #chart_div_weeks(style='width: 400px; height: 120px;')
+    .col-lg-4.col-md-4.col-sm-6.col-xs-4.guagebottom
+          #chart_div_months(style='width: 400px; height: 120px;')
+
+
+
+    
+    
+    

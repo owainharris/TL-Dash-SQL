@@ -1,6 +1,6 @@
 .center {
     margin: auto;
-    width: 50%;
+    width: 90%;
     padding: 10px;
     padding-top: 100px;
 }
@@ -8,7 +8,16 @@
 .nav-pills>li.active>a,
 .nav-pills>li.active>a:hover,
 .nav-pills>li.active>a:focus {
-    background-color: #C5F018 !important;
+    background-color: #7CB342 !important;
+}
+
+.guagebottom {
+    margin-bottom: 10em;
+    padding-bottom: 10em;
+}
+
+.jobs {
+    margin-top: 10em;
 }
 
 h1 {

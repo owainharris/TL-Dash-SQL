@@ -169,7 +169,7 @@ var trafficLive = function(options) {
             },
             recent: function(callback) {
                 var d = new Date(),
-                    month = '' + (d.getMonth() + 1),
+                    month = '' + (d.getMonth() - 1),
                     day = '' + d.getDate(),
                     year = d.getFullYear();
 

@@ -23,8 +23,8 @@ module.exports = {
 
     employees: function employees() {
         const tl = new TrafficLive({
-            email: 'helen.young@moosetoys.com',
-            token: 'Oo9rVmllo5BQBxyeOZSvGQv0Q0DVzar2O9NWjXbD',
+            email: 'owainh2@gmail.com',
+            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
             pageSize: 500 //max 500
         });
         tl.employees.all((response, key) => {
@@ -137,8 +137,8 @@ module.exports = {
             pageSize: 500 //max 500
         });
         tl.jobs.all((response, key) => {
-            const array = response.data.map(item => [item.id, item.jobNumber, item.jobStateType, item.jobBillingStateType, item.potentialValue.amountString, item.estimatedSellValue.amountString, item.billedNets, item.jobDetailId]);
-            const query = connection.query('INSERT IGNORE INTO jobs(jobID, jobNumber, jobStateType, jobBillingStateType, potentialValue, estimatedSellValue, billedNet, fk_jobDetailId) VALUES ?', [array],
+            const array = response.data.map(item => [item.id, item.jobNumber, item.jobStateType, item.jobBillingStateType, dateformat(item.jobStartDate, 'yyyy-mm-dd'), dateformat(item.internalDeadline, 'yyyy-mm-dd'), item.potentialValue.amountString, item.estimatedSellValue.amountString, item.billedNets, item.jobDetailId]);
+            const query = connection.query('INSERT IGNORE INTO jobs(jobID, jobNumber, jobStateType, jobBillingStateType, jobStartDate, internalDeadline, potentialValue, estimatedSellValue, billedNet, fk_jobDetailId) VALUES ?', [array],
                 (error, results, fields) => {
                     if (error) console.log(error);
                     else {
@@ -168,8 +168,8 @@ module.exports = {
 
     entries: function entries() {
         const tl = new TrafficLive({
-            email: 'helen.young@moosetoys.com',
-            token: 'Oo9rVmllo5BQBxyeOZSvGQv0Q0DVzar2O9NWjXbD',
+            email: 'owainh2@gmail.com',
+            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
             pageSize: 500 //max 500
         });
         tl.entries.recent((response, key) => {
@@ -182,8 +182,28 @@ module.exports = {
                     }
                 });
         });
+    },
+
+    allocations: function allocations() {
+        const tl = new TrafficLive({
+            email: 'owainh2@gmail.com',
+            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            pageSize: 500 //max 500
+        });
+        tl.allocations.recent((response, key) => {
+            const array = response.data.map(item => [item.id, dateformat(item.earliestIntervalStart, 'yyyy-mm-dd'), dateformat(item.latestIntervalEnd, 'yyyy-mm-dd')]);
+            const query = connection.query('INSERT IGNORE INTO allocations(allocationId, earliestIntervalStart, latestIntervalEnd ) VALUES ?', [array],
+                (error, results, fields) => {
+                    if (error) console.log(error);
+                    else {
+                        console.log("Imported " + array.length + " ALLOCATIONS to MySQL!" + '\n');
+                    }
+                });
+        });
     }
 };
+
+
 /*
 function allocations() {
     const tl = new TrafficLive({

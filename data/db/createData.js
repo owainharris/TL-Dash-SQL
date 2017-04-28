@@ -91,6 +91,52 @@ module.exports = function createData() {
 
     console.log("Queries saved to file" + '\n');
 
-    //connection.end();
+
+    // ALL JOB DATA
+    connection.query('SELECT jobNumber, jobStateType AS "State", DATE_FORMAT(internaldeadline,"%d/%m/%Y") AS "Internal Deadline", jobBillingStateType AS "Billing State", potentialValue AS "Potential", estimatedSellValue AS "Estimated", billedNet AS "Billed" FROM jobs WHERE jobStateType = "PROGRESS";',
+        function(error, results, fields) {
+            if (!error) {
+                csv.writeToPath("data/csv/jobs_all.csv", results, { headers: true })
+                    .on("finish", function() {
+                        console.log("done!");
+                    });
+            } else {
+                throw error;
+            }
+        });
+
+
+    // ALL JOB DATA BY WEEK
+    connection.query('SELECT jobNumber, jobStateType, DATE_FORMAT(internaldeadline,"%d/%m/%Y") AS "Internal Deadline", jobBillingStateType AS "Billing State", potentialValue AS "Potential", estimatedSellValue AS "Estimated", billedNet AS "Billed" FROM jobs WHERE jobStateType = "PROGRESS" AND WEEK(internalDeadline) = WEEK(CURDATE()) AND YEAR(internalDeadline) = YEAR(CURDATE());',
+        function(error, results, fields) {
+            if (!error) {
+                csv.writeToPath("data/csv/jobs_all_week.csv", results, { headers: true })
+                    .on("finish", function() {
+                        console.log("done!");
+                    });
+            } else {
+                throw error;
+            }
+        });
+
+    // ALL JOB DATA BY MONTH
+    connection.query('SELECT jobNumber, jobStateType, DATE_FORMAT(internaldeadline,"%d/%m/%Y") AS "Internal Deadline", jobBillingStateType AS "Billing State", potentialValue AS "Potential", estimatedSellValue AS "Estimated", billedNet AS "Billed" FROM jobs WHERE jobStateType = "PROGRESS" AND MONTH(internalDeadline) = MONTH(CURDATE()) AND YEAR(internalDeadline) = YEAR(CURDATE());',
+        function(error, results, fields) {
+            if (!error) {
+                csv.writeToPath("data/csv/jobs_all_month.csv", results, { headers: true })
+                    .on("finish", function() {
+                        console.log("done!");
+                    });
+            } else {
+                throw error;
+            }
+        });
+
+
+
+
+    console.log("Queries saved to file" + '\n');
+
+
 
 };

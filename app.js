@@ -12,7 +12,11 @@ var employeelist = require('./routes/employeelist');
 var joblist = require('./routes/joblist');
 var allocationslist = require('./routes/allocationslist');
 var entrieslist = require('./routes/entrieslist');
-var test = require('./routes/test');
+var timesheets = require('./routes/timesheets');
+var job_gauges = require('./routes/job_gauges');
+var jobs_all = require('./routes/jobs_all');
+var jobs_all_weeks = require('./routes/jobs_all_weeks');
+var jobs_all_months = require('./routes/jobs_all_months');
 
 
 
@@ -39,7 +43,11 @@ app.use('/employeelist', employeelist);
 app.use('/joblist', joblist);
 app.use('/allocationslist', allocationslist);
 app.use('/entrieslist', entrieslist);
-app.use('/test', test);
+app.use('/timesheets', timesheets);
+app.use('/job_gauges', job_gauges);
+app.use('/jobs_all', jobs_all);
+app.use('/jobs_all_weeks', jobs_all_weeks);
+app.use('/jobs_all_months', jobs_all_months);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

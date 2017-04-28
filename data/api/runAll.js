@@ -25,17 +25,18 @@ module.exports = function runAll() {
         // calls.clientNames();
         // calls.projects();
         //  calls.jobDetails();
-        //  calls.jobs();
+        calls.jobs();
         // calls.tasks();
         calls.entries();
+        calls.allocations();
     }, 3000);
 
 
     setTimeout(function() {
         createFK();
-    }, 30000);
+    }, 12000);
 
     setTimeout(function() {
         createData();
-    }, 31000);
+    }, 13000);
 };
