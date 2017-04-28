@@ -71,15 +71,42 @@ html
       }
       );
       }
+    script(type='text/javascript').
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+      // grab the CSV
+      $.get('/csv/timesheets_all.csv', function(csvString) {
+      var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+      var data = new google.visualization.arrayToDataTable(arrayData);
+      var options = {
+      width: 700, height: 320,
+      redFrom: 70, redTo: 100,
+      yellowFrom: 50, yellowTo: 70,
+      minorTicks: 5,
+      };
+      // this view can select a subset of the data at a time
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0,1]);
+      var chart = new google.visualization.Gauge(document.getElementById('chart_div_time'));
+      chart.draw(data, options);
+      }
+      );
+      }
   body
-a(href='./jobs_all')
   .row.jobs
     .col-lg-4.col-md-4.col-sm-6.col-xs-4.meow.guagebottom
+      a(href='./jobs_all')  
           #chart_div_jobs(title='This is my tooltip' style='width: 400px; height: 120px;')
     .col-lg-4.col-md-4.col-sm-6.col-xs-4.meow.guagebottom
+      a(href='./jobs_all_weeks')  
           #chart_div_weeks(style='width: 400px; height: 120px;')
-    .col-lg-4.col-md-4.col-sm-6.col-xs-4.guagebottom
+    .col-lg-4.col-md-4.col-sm-6.col-xs-4.meow.guagebottom
+      a(href='./jobs_all_months')  
           #chart_div_months(style='width: 400px; height: 120px;')
+    .col-lg-4.col-md-4.col-sm-6.col-xs-4.guagebottom
+      a(href='./timesheets')  
+          #chart_div_time(style='width: 400px; height: 120px;')
 
 
 

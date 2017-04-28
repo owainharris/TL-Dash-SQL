@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 var mysql = require("mysql");
 
-/*
+
 var runAll = require('../data/api/runAll.js');
 setTimeout(function() {
     runAll();
 }, 5000);
-*/
+
 
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Welcome to trafficLIVE Dash' });
@@ -15,6 +15,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/timesheets', function(req, res, next) {
     res.render('timesheets');
+});
+
+router.get('/timesheets_expected', function(req, res, next) {
+    res.render('timesheets_expected');
 });
 
 router.get('/jobs_all', function(req, res, next) {

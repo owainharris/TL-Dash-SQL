@@ -5,7 +5,6 @@
 
 const TrafficLive = require('../lib/trafficLive.js');
 const mysql = require("mysql");
-//const connection = require('../db/connect.js');
 const dateformat = require("dateformat");
 var EventEmitter = require('events').EventEmitter;
 const assert = require('assert');

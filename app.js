@@ -13,6 +13,7 @@ var timesheets = require('./routes/timesheets');
 var jobs_all = require('./routes/jobs_all');
 var jobs_all_weeks = require('./routes/jobs_all_weeks');
 var jobs_all_months = require('./routes/jobs_all_months');
+var timesheets_expected = require('./routes/timesheets_expected');
 
 
 
@@ -39,6 +40,7 @@ app.use('/timesheets', timesheets);
 app.use('/jobs_all', jobs_all);
 app.use('/jobs_all_weeks', jobs_all_weeks);
 app.use('/jobs_all_months', jobs_all_months);
+app.use('/timesheets_expected', timesheets_expected);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
