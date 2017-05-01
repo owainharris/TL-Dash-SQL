@@ -22,8 +22,8 @@ module.exports = {
 
     employees: function employees() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'dam@moosetoys.com',
+            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
             pageSize: 500 //max 500
         });
         tl.employees.all((response, key) => {
@@ -41,8 +41,8 @@ module.exports = {
 
     chargebands: function chargebands() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'dam@moosetoys.com',
+            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
             pageSize: 500 //max 500
         });
         tl.chargebands.all((response, key) => {
@@ -59,8 +59,8 @@ module.exports = {
 
     clients: function clients() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'dam@moosetoys.com',
+            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
             pageSize: 500 //max 500
         });
         tl.clients.all((response, key) => {
@@ -77,8 +77,8 @@ module.exports = {
 
     clientNames: function clientNames() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'dam@moosetoys.com',
+            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
             pageSize: 500 //max 500
         });
         tl.clientNames.all((response, key) => {
@@ -95,8 +95,8 @@ module.exports = {
 
     projects: function projects() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'dam@moosetoys.com',
+            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
             pageSize: 500 //max 500
         });
         tl.projects.all((response, key) => {
@@ -113,8 +113,8 @@ module.exports = {
 
     jobDetails: function jobDetails() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'dam@moosetoys.com',
+            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
             pageSize: 500 //max 500
         });
         tl.jobs.allDetails((response, key) => {
@@ -131,8 +131,8 @@ module.exports = {
 
     jobs: function jobs() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'dam@moosetoys.com',
+            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
             pageSize: 500 //max 500
         });
         tl.jobs.all((response, key) => {
@@ -149,8 +149,8 @@ module.exports = {
 
     tasks: function tasks() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'dam@moosetoys.com',
+            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
             pageSize: 500 //max 500
         });
         tl.tasks.all((response, key) => {
@@ -167,11 +167,11 @@ module.exports = {
 
     entries: function entries() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'dam@moosetoys.com',
+            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
             pageSize: 500 //max 500
         });
-        tl.entries.recent((response, key) => {
+        tl.entries.all((response, key) => {
             const array = response.data.map(item => [item.id, dateformat(item.endTime, 'yyyy-mm-dd'), item.minutes / 60, item.timeEntryCost.amountString, item.trafficEmployeeId.id]);
             const query = connection.query('INSERT IGNORE INTO entries(entrieId, dateCreated, minutes, timeEntryCost, fk_trafficEmployeeID) VALUES ?', [array],
                 (error, results, fields) => {
@@ -185,11 +185,11 @@ module.exports = {
 
     allocations: function allocations() {
         const tl = new TrafficLive({
-            email: 'owainh2@gmail.com',
-            token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
+            email: 'dam@moosetoys.com',
+            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
             pageSize: 500 //max 500
         });
-        tl.allocations.recent((response, key) => {
+        tl.allocations.all((response, key) => {
             const array = response.data.map(item => [item.id, dateformat(item.earliestIntervalStart, 'yyyy-mm-dd'), dateformat(item.latestIntervalEnd, 'yyyy-mm-dd')]);
             const query = connection.query('INSERT IGNORE INTO allocations(allocationId, earliestIntervalStart, latestIntervalEnd ) VALUES ?', [array],
                 (error, results, fields) => {
@@ -201,24 +201,3 @@ module.exports = {
         });
     }
 };
-
-
-/*
-function allocations() {
-    const tl = new TrafficLive({
-        email: 'owainh2@gmail.com',
-        token: 'VsrLCefrEBXgSCF7cOt5jNNGnGyAf2uVTtDoBQxG',
-        pageSize: 500 //max 500
-    });
-    tl.allocations.recent((response, key) => {
-        const array = response.data.map(item => [item.id, item.trafficEmployeeId]);
-        const query = connection.query('INSERT INTO allocations(allocationId, fk_employeeId) VALUES ?', [array],
-            (error, results, fields) => {
-                if (error) console.log(error);
-                else {
-                    console.log("Imported " + array.length + " ALLOCATIONS to MySQL!" + '\n');
-                }
-            });
-    });
-}
-*/

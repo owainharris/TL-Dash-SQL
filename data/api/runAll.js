@@ -20,23 +20,23 @@ module.exports = function runAll() {
 
     setTimeout(function() {
         calls.employees();
-        // calls.chargebands();
-        // calls.clients();
-        // calls.clientNames();
-        // calls.projects();
-        //  calls.jobDetails();
+        calls.chargebands();
+        calls.clients();
+        calls.clientNames();
+        calls.projects();
+        calls.jobDetails();
         calls.jobs();
-        // calls.tasks();
+        calls.tasks();
         calls.entries();
-        //calls.allocations();
+        calls.allocations();
     }, 3000);
 
 
     setTimeout(function() {
         createFK();
-    }, 12000);
+    }, 300000);
 
     setTimeout(function() {
         createData();
-    }, 13000);
+    }, 310000);
 };
