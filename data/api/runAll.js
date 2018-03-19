@@ -5,17 +5,17 @@
 
 module.exports = function runAll() {
 
-    var dropFK = require('../db/dropFK.js');
+    //var dropFK = require('../db/dropFK.js');
     var dropData = require('../db/dropData.js');
     var calls = require('./calls.js');
     var createFK = require('../db/createFK.js');
     var createData = require('../db/createData.js');
 
-    dropFK();
+    //dropFK();
 
-    setTimeout(function() {
-        dropData();
-    }, 1000);
+    // setTimeout(function() {
+    //     dropData();
+    // }, 1000);
 
 
     setTimeout(function() {

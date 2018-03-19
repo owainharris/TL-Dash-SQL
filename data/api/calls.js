@@ -22,8 +22,8 @@ module.exports = {
 
     employees: function employees() {
         const tl = new TrafficLive({
-            email: 'dam@moosetoys.com',
-            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
+            email: 'jimmyduck123@gmail.com',
+            token: 'lTVcPY1ClpPTIEwKOQ460BMNDUyCt0ltadzHxs9h',
             pageSize: 500 //max 500
         });
         tl.employees.all((response, key) => {
@@ -41,8 +41,8 @@ module.exports = {
 
     chargebands: function chargebands() {
         const tl = new TrafficLive({
-            email: 'dam@moosetoys.com',
-            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
+            email: 'jimmyduck123@gmail.com',
+            token: 'lTVcPY1ClpPTIEwKOQ460BMNDUyCt0ltadzHxs9h',
             pageSize: 500 //max 500
         });
         tl.chargebands.all((response, key) => {
@@ -59,8 +59,8 @@ module.exports = {
 
     clients: function clients() {
         const tl = new TrafficLive({
-            email: 'dam@moosetoys.com',
-            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
+            email: 'jimmyduck123@gmail.com',
+            token: 'lTVcPY1ClpPTIEwKOQ460BMNDUyCt0ltadzHxs9h',
             pageSize: 500 //max 500
         });
         tl.clients.all((response, key) => {
@@ -77,8 +77,8 @@ module.exports = {
 
     clientNames: function clientNames() {
         const tl = new TrafficLive({
-            email: 'dam@moosetoys.com',
-            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
+            email: 'jimmyduck123@gmail.com',
+            token: 'lTVcPY1ClpPTIEwKOQ460BMNDUyCt0ltadzHxs9h',
             pageSize: 500 //max 500
         });
         tl.clientNames.all((response, key) => {
@@ -95,8 +95,8 @@ module.exports = {
 
     projects: function projects() {
         const tl = new TrafficLive({
-            email: 'dam@moosetoys.com',
-            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
+            email: 'jimmyduck123@gmail.com',
+            token: 'lTVcPY1ClpPTIEwKOQ460BMNDUyCt0ltadzHxs9h',
             pageSize: 500 //max 500
         });
         tl.projects.all((response, key) => {
@@ -113,8 +113,8 @@ module.exports = {
 
     jobDetails: function jobDetails() {
         const tl = new TrafficLive({
-            email: 'dam@moosetoys.com',
-            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
+            email: 'jimmyduck123@gmail.com',
+            token: 'lTVcPY1ClpPTIEwKOQ460BMNDUyCt0ltadzHxs9h',
             pageSize: 500 //max 500
         });
         tl.jobs.allDetails((response, key) => {
@@ -131,8 +131,8 @@ module.exports = {
 
     jobs: function jobs() {
         const tl = new TrafficLive({
-            email: 'dam@moosetoys.com',
-            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
+            email: 'jimmyduck123@gmail.com',
+            token: 'lTVcPY1ClpPTIEwKOQ460BMNDUyCt0ltadzHxs9h',
             pageSize: 500 //max 500
         });
         tl.jobs.all((response, key) => {
@@ -149,8 +149,8 @@ module.exports = {
 
     tasks: function tasks() {
         const tl = new TrafficLive({
-            email: 'dam@moosetoys.com',
-            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
+            email: 'jimmyduck123@gmail.com',
+            token: 'lTVcPY1ClpPTIEwKOQ460BMNDUyCt0ltadzHxs9h',
             pageSize: 500 //max 500
         });
         tl.tasks.all((response, key) => {
@@ -167,8 +167,8 @@ module.exports = {
 
     entries: function entries() {
         const tl = new TrafficLive({
-            email: 'dam@moosetoys.com',
-            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
+            email: 'jimmyduck123@gmail.com',
+            token: 'lTVcPY1ClpPTIEwKOQ460BMNDUyCt0ltadzHxs9h',
             pageSize: 500 //max 500
         });
         tl.entries.all((response, key) => {
@@ -185,8 +185,8 @@ module.exports = {
 
     allocations: function allocations() {
         const tl = new TrafficLive({
-            email: 'dam@moosetoys.com',
-            token: 'qvQNI2RW8K1g1SKRNT4mGg7UxYd7NNpQMvK6QXTk',
+            email: 'jimmyduck123@gmail.com',
+            token: 'lTVcPY1ClpPTIEwKOQ460BMNDUyCt0ltadzHxs9h',
             pageSize: 500 //max 500
         });
         tl.allocations.all((response, key) => {
